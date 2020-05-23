@@ -4,7 +4,6 @@ import AxiosWithAuth from '../utils/AxiosWithAuth';
 
 function Login(props) {
   const [creds, setCreds] = useState({
-    name: '',
     email: '',
     password: '',
   });
@@ -29,14 +28,12 @@ function Login(props) {
   };
   return (
     <section className='loginForm'>
+      <h3>Welcome to Secret Family Recipes!</h3>
+      <h4>Please Log In</h4>
+      <h4>
+        First Visit? <a href='/register'>Register Here</a>
+      </h4>
       <form onSubmit={login}>
-        {/* <label>Name:</label>
-        <input
-          type='text'
-          name='username'
-          value={creds.username}
-          onChange={handleChange}
-        /> */}
         <label>Email:</label>
         <input
           type='email'

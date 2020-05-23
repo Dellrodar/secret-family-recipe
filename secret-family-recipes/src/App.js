@@ -6,6 +6,7 @@ import './App.css';
 import PrivateRoute from './components/PriviteRoute';
 import Header from './components/Header';
 import Home from './components/Home';
+import Register from './components/Register';
 function App() {
   return (
     <Router>
@@ -15,6 +16,7 @@ function App() {
         </div>
         <div className='routes'>
           <Switch>
+            <Route path='/register' component={Register} />
             <Route path='/login' component={Login} />
             <Route exact path='/' component={Login} />
             <PrivateRoute path='/recipes-home' component={Home} />
