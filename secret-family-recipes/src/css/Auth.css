@@ -1,4 +1,4 @@
-.loginInput {
+.authInput {
 	display: flex;
 	align-content: center;
 	align-items: center;
@@ -8,11 +8,11 @@
 	margin-bottom: 1%;
 }
 
-.loginInput .MuiFormControl-root {
+.authInput .MuiFormControl-root {
 	margin: 10px 0;
 }
 
-.loginInput p.MuiFormHelperText-root {
+.authInput p.MuiFormHelperText-root {
 	color: red;
 	margin-bottom: 10px;
 }
