@@ -75,13 +75,6 @@ function Login(props) {
   return (
     <section className='loginContainer'>
       <form onSubmit={login}>
-        {/* <label>Name:</label>
-        <input
-          type='text'
-          name='username'
-          value={creds.username}
-          onChange={handleChange}
-        /> */}
         <div className='loginInput'>
           <TextField
             id='email'
@@ -95,11 +88,10 @@ function Login(props) {
             onChange={handleChange}
           />
           {errorState.email.length > 0 ? <FormHelperText>{errorState.email}</FormHelperText> : null}
-          <br />
           <TextField
             id='password'
             label='password'
-            type='text'
+            type='password'
             name='password'
             variant='outlined'
             //data-cy added for e2e testing
@@ -108,7 +100,6 @@ function Login(props) {
             onChange={handleChange}
           />
           {errorState.password.length > 0 ? <FormHelperText>{errorState.password}</FormHelperText> : null}
-        <br />
         <Button type='submit' variant='contained' color='primary' data-cy='submit'>
           Log In
         </Button>
