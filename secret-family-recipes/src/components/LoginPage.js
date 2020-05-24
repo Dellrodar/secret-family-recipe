@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import AxiosWithAuth from '../utils/AxiosWithAuth';
+import logoSmall from '../img/SmallColorLogo.png';
 
 function Login(props) {
   const [creds, setCreds] = useState({
@@ -28,6 +29,7 @@ function Login(props) {
   };
   return (
     <section className='loginForm'>
+      <img src={logoSmall} alt='Logo' />
       <h3>Welcome to Secret Family Recipes!</h3>
       <h4>Please Log In</h4>
       <h4>
