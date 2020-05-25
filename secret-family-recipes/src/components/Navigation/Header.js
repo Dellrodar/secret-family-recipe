@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link, Switch } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
 
 function Header() {
   const logout = e => {
@@ -13,13 +11,15 @@ function Header() {
     <div className='nav-bar'>
       {localStorage.getItem('token') === null ? (
         <section className='public-nav'>
-          <Link to='/login'>Login</Link>
-          <Link to='/register'>Register</Link>
+          <h2>Welcome to Secret Family Recipes</h2>
         </section>
       ) : (
         <section className='private-nav'>
-          <Link to='/recipes-home'>All Recipes</Link>
-          <button onClick={logout}>Log Out</button>
+          <h2>Welcome to Secret Family Recipes</h2>
+          <section className='links'>
+            <a href='/recipes-home'>All Recipes</a>
+            <button onClick={logout}>Log Out</button>
+          </section>
         </section>
       )}
     </div>

@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 
-import {
-  Button,
-  TextField,
-  FormHelperText
-} from '@material-ui/core';
+import { Button, TextField, FormHelperText } from '@material-ui/core';
 import * as yup from 'yup';
 import { withRouter, useHistory } from 'react-router-dom';
 import '../css/Auth.css';
@@ -26,9 +22,7 @@ function Auth(props) {
 
   const registerSchema = yup.object().shape({
     ...baseSchemaFields,
-    name: yup
-      .string()
-      .required('You must include your name.')
+    name: yup.string().required('You must include your name.'),
   });
 
   let history = useHistory();
@@ -41,22 +35,22 @@ function Auth(props) {
   const [errorState, setErrorState] = useState({
     email: '',
     name: '',
-    password:'',
+    password: '',
   });
 
   //Form Validation check
-  const validate = (e) => {
+  const validate = e => {
     const value = e.target.value;
     yup
       .reach(currentSchema, e.target.name)
       .validate(value)
-      .then((valid) => {
+      .then(valid => {
         setErrorState({
           ...errorState,
           [e.target.name]: '',
         });
       })
-      .catch((err) => {
+      .catch(err => {
         setErrorState({
           ...errorState,
           [e.target.name]: err.errors[0],
@@ -70,7 +64,7 @@ function Auth(props) {
     password: '',
   });
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     e.persist();
     validate(e);
     setCreds({
@@ -79,75 +73,81 @@ function Auth(props) {
     });
   };
 
-  const login = (e) => {
+  const login = e => {
     e.preventDefault();
     console.log(creds);
     AxiosWithAuth()
       .post('auth/login', creds)
-      .then((res) => {
+      .then(res => {
         localStorage.setItem('token', res.data.token);
         props.history.push('/recipes-home');
       })
-      .catch((err) => {
+      .catch(err => {
         console.log('Err is: ', err);
       });
   };
 
-  const register = (e) => {
+  const register = e => {
     e.preventDefault();
     console.log(creds);
     AxiosWithAuth()
       .post('auth/register', creds)
-      .then((res) => {
+      .then(res => {
         localStorage.setItem('token', res.data.token);
         props.history.push('/recipes-home');
       })
-      .catch((err) => {
+      .catch(err => {
         console.log('Err is: ', err);
       });
   };
 
   const baseFields = (
     <>
-    <TextField
-      id='email'
-      label='email'
-      type='email'
-      name='email'
-      variant='outlined'
-      data-cy='email-input'
-      value={creds.email}
-      onChange={handleChange}
-    />
-    {errorState.email.length > 0 ? <FormHelperText>{errorState.email}</FormHelperText> : null}
-    <TextField
-      id='password'
-      label='password'
-      type='password'
-      name='password'
-      variant='outlined'
-      data-cy='password-input'
-      value={creds.password}
-      onChange={handleChange}
-    />
-    {errorState.password.length > 0 ? <FormHelperText>{errorState.password}</FormHelperText> : null}
+      <TextField
+        id='email'
+        label='email'
+        type='email'
+        name='email'
+        variant='outlined'
+        data-cy='email-input'
+        value={creds.email}
+        onChange={handleChange}
+      />
+      {errorState.email.length > 0 ? (
+        <FormHelperText>{errorState.email}</FormHelperText>
+      ) : null}
+      <TextField
+        id='password'
+        label='password'
+        type='password'
+        name='password'
+        variant='outlined'
+        data-cy='password-input'
+        value={creds.password}
+        onChange={handleChange}
+      />
+      {errorState.password.length > 0 ? (
+        <FormHelperText>{errorState.password}</FormHelperText>
+      ) : null}
     </>
   );
 
   const registerFields = (
     <>
-    <TextField
-      id='name'
-      label='name'
-      type='text'
-      name='name'
-      variant='outlined'
-      data-cy='name-input'
-      value={creds.name}
-      onChange={handleChange}
-    />
-    {errorState.name.length > 0 ? <FormHelperText>{errorState.name}</FormHelperText> : null}
-    {baseFields}
+      <TextField
+        id='name'
+        label='name'
+        type='text'
+        name='name'
+        variant='outlined'
+        data-cy='name-input'
+        value={creds.name}
+        onChange={handleChange}
+      />
+      {errorState.name.length > 0 ? (
+        <FormHelperText>{errorState.name}</FormHelperText>
+      ) : null}
+      {baseFields}
     </>
   );
 
@@ -160,8 +160,8 @@ function Auth(props) {
   const loginForm = (
     <form onSubmit={login}>
       <div className='authInput'>
-      {baseFields}
-      {submitButton('Log in', 'login')}
+        {baseFields}
+        {submitButton('Log in', 'login')}
       </div>
     </form>
   );
@@ -180,7 +180,12 @@ function Auth(props) {
       <NavTabs
         tabs={[
           { label: 'Login', link: '/login', panel: loginForm, tabOrder: 0 },
-          { label: 'Register', link: '/register', panel: registerForm, tabOrder: 1 },
+          {
+            label: 'Register',
+            link: '/register',
+            panel: registerForm,
+            tabOrder: 1,
+          },
         ]}
       />
     </section>

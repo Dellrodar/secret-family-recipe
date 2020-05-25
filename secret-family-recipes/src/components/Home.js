@@ -5,14 +5,21 @@ function Home() {
   const getUsers = e => {
     e.preventDefault();
     AxiosWithAuth()
-      .get('recipes/')
+      .get('/users')
+      .then(res => console.log(res))
+      .catch(err => console.log('User Get Err:', err));
+  };
+
+  const getRecipes = e => {
+    e.preventDefault();
+    AxiosWithAuth()
+      .get('/users/1/recipes')
       .then(res => console.log(res))
       .catch(err => console.log('User Get Err:', err));
   };
   return (
     <div>
-      Remove this when writing this page!
-      <button onClick={getUsers}>Click me</button>
+      <button onClick={getRecipes}>Click me</button>
     </div>
   );
 }

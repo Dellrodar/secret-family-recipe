@@ -4,19 +4,23 @@ import Auth from './components/Auth';
 import './App.css';
 
 import PrivateRoute from './components/Navigation/PrivateRoute';
-// import Header from './components/Header';
+import Header from './components/Navigation/Header';
 import Home from './components/Home';
-import Register from './components/Register';
+import logoSmall from './img/SmallColorLogo.png';
+
 function App() {
   return (
     <BrowserRouter>
       <div className='App'>
-        <div className='nav-container'>{/* <Header /> */}</div>
+        <div className='nav-container'>
+          <Header />
+        </div>
+        <img src={logoSmall} alt='Logo' />
         <div className='routes'>
           <Switch>
-            <Route path='/register' component={Register} />
-            <Route path='/login' component={Login} />
-            <Route exact path='/' component={Login} />
+            <Route path='/login' component={Auth} />
+            <Route path='/register' component={Auth} />
+            <Route exact path='/' component={Auth} />
             <PrivateRoute path='/recipes-home' component={Home} />
           </Switch>
         </div>
