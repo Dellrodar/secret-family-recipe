@@ -1,27 +1,27 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Auth from './components/Auth';
+import AuthPage from './components/AuthPage';
+import Header from './components/Navigation/Header';
+import logoSmall from './img/SmallColorLogo.png';
 import './App.css';
 
 import PrivateRoute from './components/Navigation/PrivateRoute';
-import Header from './components/Navigation/Header';
 import Home from './components/Home';
-import logoSmall from './img/SmallColorLogo.png';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className='App'>
-        <div className='nav-container'>
+      <div className="App">
+      <div className='nav-container'>
           <Header />
+          <img src={logoSmall} alt='Logo' />
         </div>
-        <img src={logoSmall} alt='Logo' />
-        <div className='routes'>
+        <div className="routes">
           <Switch>
-            <Route path='/login' component={Auth} />
-            <Route path='/register' component={Auth} />
-            <Route exact path='/' component={Auth} />
-            <PrivateRoute path='/recipes-home' component={Home} />
+            <Route path={`/login`} component={AuthPage} />
+            <Route path={`/register`} component={AuthPage} />
+            <Route exact path={`/`} component={AuthPage} />
+            <PrivateRoute path={`/recipes-home`} component={Home} />
           </Switch>
         </div>
       </div>
