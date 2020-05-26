@@ -19,11 +19,13 @@
 
 .loginContainer {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 }
 
 .loginTabs {
-	align-content: center;
+	align-items: center;
 	justify-content: center;
 }
 

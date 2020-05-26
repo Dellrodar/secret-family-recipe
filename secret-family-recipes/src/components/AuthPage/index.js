@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { withRouter } from 'react-router-dom';
 import { Formik } from 'formik';
 import AuthForm from './Form';
-import '../../css/Auth.css';
+import '../../css/AuthPage.css';
 import NavTabs from '../Navigation/Tabs/NavTabs';
 import AxiosWithAuth from '../../utils/AxiosWithAuth';
 
@@ -85,7 +85,7 @@ function AuthPage(props) {
   );
 
   return (
-    <section className="loginContainer">
+  <section className="loginContainer">
       <div className="loginTabs">
         <NavTabs
           tabs={[
