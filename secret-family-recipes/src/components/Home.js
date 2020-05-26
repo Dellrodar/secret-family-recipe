@@ -1,5 +1,6 @@
 import React from 'react';
 import AxiosWithAuth from '../utils/AxiosWithAuth';
+import Header from './Navigation/Header';
 
 function Home() {
   const getUsers = e => {
@@ -19,6 +20,9 @@ function Home() {
   };
   return (
     <div>
+      <div className='nav-container'>
+          <Header />
+        </div>
       <button onClick={getRecipes}>Click me</button>
     </div>
   );
