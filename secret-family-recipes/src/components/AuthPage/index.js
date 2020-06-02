@@ -6,8 +6,19 @@ import AuthForm from './Form';
 import '../../css/AuthPage.css';
 import NavTabs from '../Navigation/Tabs/NavTabs';
 import AxiosWithAuth from '../../utils/AxiosWithAuth';
+import getUserFromToken from '../../utils/GetUserFromToken';
 
 function AuthPage(props) {
+  const {
+    history,
+    setAuth,
+    setUser,
+    isAuth,
+  } = props;
+  if (isAuth !== null) {
+    setUser(getUserFromToken(isAuth));
+    history.push(`${process.env.PUBLIC_URL}/recipes-home`);
+  }
   const baseSchemaFields = {
     email: yup
       .string()
@@ -29,8 +40,10 @@ function AuthPage(props) {
     AxiosWithAuth()
       .post(`auth/${action}`, values)
       .then((res) => {
+        setAuth(res.data.token);
+        setUser(getUserFromToken(res.data.token));
         localStorage.setItem('token', res.data.token);
-        props.history.push('/recipes-home');
+        history.push(`${process.env.PUBLIC_URL}/recipes-home`);
       })
       .catch((err) => {
         console.log('Err is: ', err);
@@ -82,7 +95,7 @@ function AuthPage(props) {
   );
 
   return (
-  <section className="loginContainer">
+    <section className="loginContainer">
       <div className="loginTabs">
         <NavTabs
           tabs={[

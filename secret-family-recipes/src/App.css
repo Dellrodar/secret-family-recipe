@@ -4,7 +4,7 @@
 }
 
 .nav-bar {
-	height: 10vh;
+	height: 14vh;
 	display: flex;
 	background-color: #ffc857;
 }
@@ -24,6 +24,7 @@
 .private-nav {
 	width: 80%;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	margin: 0 auto;
